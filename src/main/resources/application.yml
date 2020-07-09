@@ -13,4 +13,6 @@ logging:
   pattern:
     console: '%p%m%n'
 
-
+# 若使用 xml配置方式，需要指定目录
+mybatis-plus:
+  mapper-locations: classpath:mapper/*
