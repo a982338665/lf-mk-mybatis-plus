@@ -2,14 +2,56 @@
 Mybatis-Plus（MP）在 MyBatis 的基础上只做增强不做改变，简化开发、提高效率  
 介绍MyBatis-Plus的高级功能，包括逻辑删除、自动填充、乐观锁、性能分析、多租户实现、动态表和SQL注入器等内容
 >课程地址：https://www.imooc.com/learn/1130
->
+>官方地址：mybatis.plus
 
 ## 1.课程介绍及快速入门
 ### 1.1 课程介绍及学前须知
+
+1.前置技术：
+    
+    ·lambda表达式
+    ·springboot，maven
+    ·mybatis    
+  
 ### 1.2 mybatis与JPA对比
-### 1.3 MP简介
+
+1.mybatis与jpa对比：
+    
+    ·mybatis：
+        ·优势：
+            -sql语句能自由控制，更灵活，性能较高
+            -sql与代码分离，易于阅读维护
+            -提供xml标签，支持编写动态sql【if-else等】
+        ·劣势：
+            -简单的crud操作仍需要写sql
+            -xml要维护大量sql
+            -mybatis自身功能有限，但支持Plugin
+    ·jpa
+        ·优势：
+            -jpa移植性较好，hql语句，Jpql语句，只需更换数据库驱动便可更换数据库类型
+            -提供很多CRUD方法开发效率高，不用写sql
+            -面向对象操作，对象化程度更高
+            
+### 1.3 MP简介-mybatis-plus
+
+1.简介：
+    
+    ·MP是mybatis的一个增强工具，只做增强，不做改变
+    ·2018开源软件排名top10：MP第五【vue，echarts，dubbo，layui，mp，Deepin，Druid，fastjson，RocketMq，ThinkPHP】
+    ·CRUD操作在容器启动时注入
+    
+2.特性：
+    
+    ·无侵入，损耗小，强大的CRUD操作
+    ·支持lambda形式调用，支持多种数据库
+    ·支持主键自动生成，支持多种生成策略，支持ActiveRecord模式
+    ·支持自定义全局通用操作，支持关键词自动转义
+    ·内置代码生成器，内置分页插件，内置性能分析插件
+    ·内置全局拦截插件，内置SQl注入剥离器，有效防止sql注入攻击    
+    
 ### 1.4 lombok安装
 ### 1.5 快速入门
+
 ## 2.基本使用
 ### 2.1 通用传统模式简介 及通用mapper 新增方法
 ### 2.2 常用注解
