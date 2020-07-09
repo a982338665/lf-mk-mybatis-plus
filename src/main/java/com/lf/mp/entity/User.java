@@ -1,9 +1,6 @@
 package com.lf.mp.entity;
 
-import com.baomidou.mybatisplus.annotation.SqlCondition;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,6 +30,7 @@ public class User extends Model<User> implements Serializable {
      * @KNFieldDesc("主键")
      * 当id 与数据库主键id对不上的时候，需要指定主键id
      */
+//    @TableId(type = IdType.AUTO)
     @TableId
     private Long id;
 

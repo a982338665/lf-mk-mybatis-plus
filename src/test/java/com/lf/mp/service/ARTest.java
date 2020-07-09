@@ -39,7 +39,8 @@ public class ARTest {
         user.setCreateTime(new Date());
         User.setRemark2("beihzhu2");
         boolean insert = user.insert();
-        boolean insert2 = user.insertOrUpdate();
+        System.err.println(user.getId());
+//        boolean insert2 = user.insertOrUpdate();
     }
     @Test
     public void select() {
