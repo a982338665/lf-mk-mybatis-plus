@@ -13,9 +13,21 @@ logging:
   pattern:
     console: '%p%m%n'
 
-# 若使用 xml配置方式，需要指定目录
+# 若使用 xml配置方式，需要指定目录,*表示多模块下扫描
 mybatis-plus:
-  mapper-locations: classpath:mapper/*
+  mapper-locations: classpath*:mapper/*
+  # 主键全局策略配置
   global-config:
     db-config:
       id-type: id_worker
+  #      表名前缀
+  #      table-prefix: t_s_
+  #xml 返回值需要些全限定类名，配置后只需要写类名
+  type-aliases-package: com.lf.mp.entity
+  #额外配置文件
+  #设置驼峰，默认为true，可去掉
+  #configuration 和 config-location 这两个配置不能同时出现
+  configuration:
+    map-underscore-to-camel-case: true
+  #config-location: classpath：mybatis-config.xml
+
