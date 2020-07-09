@@ -1,10 +1,7 @@
 package com.lf.mp.service;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.additional.update.impl.LambdaUpdateChainWrapper;
 import com.lf.mp.dao.UserMapper;
 import com.lf.mp.entity.User;
@@ -15,7 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Map;
+import java.util.Arrays;
+import java.util.HashMap;
 
 /**
  * @author : Mr huangye
@@ -26,7 +24,7 @@ import java.util.Map;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Log4j2
-public class UpdateTest {
+public class UpdateDeleteTest {
 
     @Autowired
     UserMapper userMapper;
@@ -71,6 +69,35 @@ public class UpdateTest {
         LambdaUpdateChainWrapper<User> userUpdateWrapper = new LambdaUpdateChainWrapper<>(userMapper);
         boolean i = userUpdateWrapper.eq(User::getName, "luofeng333").set(User::getName, "luofeng22").update();
         System.err.println(i);
+    }
+
+    @Test
+    public void deleteById() {
+        int i = userMapper.deleteById(1L);
+        System.err.println(i);
+    }
+    @Test
+    public void deleteByBatchIds() {
+        int i = userMapper.deleteBatchIds(Arrays.asList(1L,2L));
+        System.err.println(i);
+    }
+    @Test
+    public void deleteMaps() {
+        HashMap<String, Object> objectObjectHashMap = new HashMap<>();
+        objectObjectHashMap.put("name", "luofeng");
+        int i = userMapper.deleteByMap(objectObjectHashMap);
+        System.err.println(i);
+    }
+    @Test
+    public void deleteWrapper() {
+        User user = new User();
+        user.setName("luofeng");
+        user.setAge(18);
+        QueryWrapper<User> userQueryWrapper = new QueryWrapper<>(user);
+        userQueryWrapper
+                .like("name", "雨")
+                .lt("age", 40);
+        int users = userMapper.delete(userQueryWrapper);
     }
 
 
