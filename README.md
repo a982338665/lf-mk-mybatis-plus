@@ -113,9 +113,13 @@ Mybatis-Plus（MP）在 MyBatis 的基础上只做增强不做改变，简化开
     
 2.删除：
 
-
 ## 6.AR模式，主键策略和基本配置
 ### 6.1 AR模式
+
+    ·通过实体类对象直接操作表的增删改查：ActiveRecord
+    ·1.实体类实现Model
+    ·2.接口集成BaseMapper
+
 ### 6.2 主键策略
 ### 6.3 基本配置
 ## 7.通用service
