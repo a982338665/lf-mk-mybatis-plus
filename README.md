@@ -51,24 +51,53 @@ Mybatis-Plus（MP）在 MyBatis 的基础上只做增强不做改变，简化开
     
 ### 1.4 lombok安装
 ### 1.5 快速入门
-
 ## 2.基本使用
 ### 2.1 通用传统模式简介 及通用mapper 新增方法
+1.ssm传统编程模式：
+    
+    ·接口中写抽象方法
+    ·XML或注解写SQL
+    ·Service中调用接口
+    ·Controller中调用
+      
 ### 2.2 常用注解
+
+    ·@TableId
+    ·@TableFiled
+    ·@TableName
+    ·@TableField(exist = false)
+
+    
 ### 2.3 排除非表字段的三种方式
+    
+    ·transient
+    ·static
+    ·@TableField(exist = false)
+       
 ## 3.mybatisPlus查询方法
 ### 3.1 普通查询
 ### 3.2 条件构造器查询1
+    
+    ·AbstractWrapper - 条件构造器的类
+    
 ### 3.3 条件构造器查询2
 ### 3.4 条件构造器查询3
 ### 3.5 条件构造器查询4
 ### 3.6 select不列出全部字段
 ### 3.7 condition作用
+
+    ·用来做模糊查询的判断：
+    
 ### 3.8 实体作为条件构造器构造方法的参数
 ### 3.9 AllEq用法
 ### 3.10 其他使用条件构造器的方法
 ### 3.11 lambda条件构造器
 ## 4.自定义sql及分页查询
+
+1.自定义sql：
+
+    ·要求版本大于：3.0.7
+    
 ## 5.更新及删除
 ## 6.AR模式，主键策略和基本配置
 ### 6.1 AR模式

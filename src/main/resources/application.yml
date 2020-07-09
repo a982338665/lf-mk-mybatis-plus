@@ -5,3 +5,12 @@ spring:
     username: root
     password: root
 
+#日志配置:trace,最低级别日志输出
+logging:
+  level:
+    root: warn
+    com.lf.mp.dao: trace
+  pattern:
+    console: '%p%m%n'
+
+
