@@ -3,6 +3,7 @@ package com.lf.mp.entity;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.Version;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -50,6 +51,7 @@ public class Users implements Serializable {
     /**
      * 版本
      */
+    @Version
     private Integer version;
     /**
      * 逻辑删除标识(0.未删除,1.已删除)
