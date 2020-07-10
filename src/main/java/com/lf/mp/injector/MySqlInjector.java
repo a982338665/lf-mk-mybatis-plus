@@ -3,6 +3,7 @@ package com.lf.mp.injector;
 import com.baomidou.mybatisplus.core.injector.AbstractMethod;
 import com.baomidou.mybatisplus.core.injector.DefaultSqlInjector;
 import com.baomidou.mybatisplus.extension.injector.LogicSqlInjector;
+import com.baomidou.mybatisplus.extension.injector.methods.additional.AlwaysUpdateSomeColumnById;
 import com.baomidou.mybatisplus.extension.injector.methods.additional.InsertBatchSomeColumn;
 import com.baomidou.mybatisplus.extension.injector.methods.additional.LogicDeleteByIdWithFill;
 import com.lf.mp.method.DeleteAllMethod;
@@ -35,6 +36,8 @@ public class MySqlInjector extends LogicSqlInjector {
         //排除逻辑删除字段  和 年龄字段不插入
         methodList.add(new InsertBatchSomeColumn(t->!t.isLogicDelete()&&!t.getColumn().equals("age")));
         methodList.add(new LogicDeleteByIdWithFill());
+        //name字段排除，不更新
+        methodList.add(new AlwaysUpdateSomeColumnById(t->!t.getColumn().equals("name")));
         return methodList;
     }
 }

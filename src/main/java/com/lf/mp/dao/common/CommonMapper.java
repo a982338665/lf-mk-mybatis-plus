@@ -1,6 +1,9 @@
 package com.lf.mp.dao.common;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.toolkit.Constants;
+import com.baomidou.mybatisplus.extension.injector.methods.additional.InsertBatchSomeColumn;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -38,4 +41,21 @@ public interface CommonMapper<T> extends BaseMapper<T> {
      * @since 2018-11-09
      */
     int deleteByIdWithFill(T entity);
+
+    /**
+     * 根据 ID 更新固定的那几个字段(但是不包含逻辑删除)
+     *
+     * <p>
+     * 自己的通用 mapper 如下使用:
+     * <pre>
+     * int alwaysUpdateSomeColumnById(@Param(Constants.ENTITY) T entity);
+     * </pre>
+     * </p>
+     *
+     * <p> 如何筛选字段参考请 {@link InsertBatchSomeColumn} 里面的注释 </p>
+     *
+     * @author hubin
+     * @since 2019-04-12
+     */
+    int alwaysUpdateSomeColumnById(@Param(Constants.ENTITY) T entity);
 }

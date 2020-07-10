@@ -71,4 +71,19 @@ public class InjectorTest {
         users.setId(1281482044978774017L);
         usersMapper.deleteByIdWithFill(users);
     }
+    /**
+     * 根据 id 更新部分字段：
+     * name不更新：且不包含逻辑删除
+     *  Execute SQL：UPDATE users SET age=NULL, email=NULL, manager_id=NULL, create_time=NULL,
+     *  update_time='2020-07-10T15:34:00.151+0800', version=NULL WHERE id=1281482044978774017 AND deleted=0
+     */
+    @Test
+    public void alwaysUpdateSomeColumnById() {
+        //逻辑删除时，同时修改其他字段
+        Users users = new Users();
+        //修改时自动填充
+        users.setName("hhhh");
+        users.setId(1281482044978774017L);
+        usersMapper.alwaysUpdateSomeColumnById(users);
+    }
 }
