@@ -2,3 +2,8 @@
 spring:
   profiles:
     active: p6spy
+
+#3.1.1 之前的版本需要在此处添加配置
+mybatis-plus:
+  global-config:
+    sql-parser-cache: true

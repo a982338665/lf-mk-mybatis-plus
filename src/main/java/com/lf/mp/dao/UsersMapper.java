@@ -1,5 +1,6 @@
 package com.lf.mp.dao;
 
+import com.baomidou.mybatisplus.annotation.SqlParser;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -18,6 +19,13 @@ import java.util.List;
  */
 public interface UsersMapper extends BaseMapper<Users> {
 
+    /**
+     * SqlParser(filter = true) 表示不增加租户信息
+     * 若版本在3.1.1之前，则需要做全局配置
+     * @param wrapper
+     * @return
+     */
+    @SqlParser(filter = true)
     @Select("select * from users ${ew.customSqlSegment}")
     List<Users> selectAll(@Param(Constants.WRAPPER) Wrapper<User> wrapper);
 
