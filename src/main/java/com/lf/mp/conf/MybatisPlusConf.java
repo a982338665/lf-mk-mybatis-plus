@@ -1,13 +1,20 @@
 package com.lf.mp.conf;
 
 import com.baomidou.mybatisplus.core.injector.ISqlInjector;
+import com.baomidou.mybatisplus.core.parser.ISqlParser;
 import com.baomidou.mybatisplus.extension.injector.LogicSqlInjector;
 import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.tenant.TenantHandler;
+import com.baomidou.mybatisplus.extension.plugins.tenant.TenantSqlParser;
+import net.sf.jsqlparser.expression.Expression;
+import net.sf.jsqlparser.expression.LongValue;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+
+import java.util.ArrayList;
 
 /**
  * @author : Mr huangye
@@ -18,14 +25,50 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 public class MybatisPlusConf {
 
+
+    /**
+     * 分页插件配置
+     * @return
+     */
     @Bean
     public PaginationInterceptor paginationInterceptor() {
-        return new PaginationInterceptor();
+        PaginationInterceptor interceptor = new PaginationInterceptor();
+        ArrayList<ISqlParser> iSqlParsers = new ArrayList<>();
+        //多租户sql解析器
+        TenantSqlParser tenantSqlParser = new TenantSqlParser();
+        tenantSqlParser.setTenantHandler(new TenantHandler() {
+            @Override
+            public Expression getTenantId() {
+                return new LongValue(1088248166370832385L);
+            }
+
+            @Override
+            public String getTenantIdColumn() {
+                return "manager_id";
+            }
+
+            /**
+             * 是否加入租户信息
+             * @param tableName
+             * @return
+             */
+            @Override
+            public boolean doTableFilter(String tableName) {
+                //表示在操作表 user时 ，不加入租户信息查询
+                if(tableName.equals("user")){
+                    return true;
+                }
+                return false;
+            }
+        });
+        iSqlParsers.add(tenantSqlParser);
+        interceptor.setSqlParserList(iSqlParsers);
+        return interceptor;
     }
 
     /**
      * 3.1.1 版本以前需要配置，之后的不需要配置
-     *
+     * 逻辑删除配置
      * @return
      */
     @Bean
