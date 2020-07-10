@@ -1,5 +1,6 @@
 package com.lf.mp.entity;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
@@ -37,12 +38,14 @@ public class Users implements Serializable {
      */
     private Long managerId;
     /**
-     * 创建时间
+     * 创建时间 - 新增时，自动填充
      */
+    @TableField(fill = FieldFill.INSERT)
     private Date createTime;
     /**
-     * 修改时间
+     * 修改时间 - 修改时自动填充
      */
+    @TableField(fill = FieldFill.UPDATE)
     private Date updateTime;
     /**
      * 版本
