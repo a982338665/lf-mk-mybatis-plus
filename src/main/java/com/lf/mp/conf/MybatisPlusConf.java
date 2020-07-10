@@ -35,8 +35,10 @@ public class MybatisPlusConf {
 
 
     public static ThreadLocal<String> myTableName = new ThreadLocal<>();
+
     /**
      * 分页插件配置
+     *
      * @return
      */
     @Bean
@@ -81,7 +83,7 @@ public class MybatisPlusConf {
                 MappedStatement ms = SqlParserHelper.getMappedStatement(metaObject);
                 //方法级别的过滤，此方法不加租户信息：查询作为条件，修改作为参数
                 //同时表名 也不会被替换，原来什么样之后什么样
-                if ("com.lf.mp.dao.UserMapper.selectById".equals(ms.getId())){
+                if ("com.lf.mp.dao.UserMapper.selectById".equals(ms.getId())) {
                     return true;
                 }
                 return false;
@@ -113,7 +115,7 @@ public class MybatisPlusConf {
             @Override
             public boolean doTableFilter(String tableName) {
                 //表示在操作表 user时 ，不加入租户信息查询
-                if(tableName.equals("user")){
+                if (tableName.equals("user")) {
                     return true;
                 }
                 return false;
@@ -126,12 +128,13 @@ public class MybatisPlusConf {
      * 3.1.1 版本以前需要配置，之后的不需要配置
      * 逻辑删除配置
      * bean of type 'com.baomidou.mybatisplus.core.injector.ISqlInjector' available: expected single matching bean but found 2: mySqlInjector,iSqlInjector
+     *
      * @return
      */
-//    @Bean
-//    public ISqlInjector iSqlInjector() {
-//        return new LogicSqlInjector();
-//    }
+    @Bean
+    public ISqlInjector iSqlInjector() {
+        return new LogicSqlInjector();
+    }
 
     /**
      * 配置乐观锁
