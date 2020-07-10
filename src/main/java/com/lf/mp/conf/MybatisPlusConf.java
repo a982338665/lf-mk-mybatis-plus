@@ -131,10 +131,10 @@ public class MybatisPlusConf {
      *
      * @return
      */
-    @Bean
-    public ISqlInjector iSqlInjector() {
-        return new LogicSqlInjector();
-    }
+//    @Bean
+//    public ISqlInjector iSqlInjector() {
+//        return new LogicSqlInjector();
+//    }
 
     /**
      * 配置乐观锁
