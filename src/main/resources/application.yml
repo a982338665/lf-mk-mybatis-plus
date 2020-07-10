@@ -8,8 +8,8 @@ spring:
 #日志配置:trace,最低级别日志输出
 logging:
   level:
-    root: info
-#    root: trace
+#    root: info
+    root: warn
     com.lf.mp.dao: trace
 #  pattern:
 #    console: '%p%m%n'
@@ -21,6 +21,9 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: id_worker
+      # 逻辑未删除字段设置为0，已删除字段设置为1，默认也是此
+      logic-not-delete-value: 0
+      logic-delete-value: 1
   #      表名前缀
   #      table-prefix: t_s_
   #xml 返回值需要些全限定类名，配置后只需要写类名
