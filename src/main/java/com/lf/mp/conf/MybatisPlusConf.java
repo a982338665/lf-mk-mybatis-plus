@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.core.parser.ISqlParser;
 import com.baomidou.mybatisplus.core.parser.ISqlParserFilter;
 import com.baomidou.mybatisplus.core.parser.SqlParserHelper;
 import com.baomidou.mybatisplus.extension.injector.LogicSqlInjector;
+import com.baomidou.mybatisplus.extension.parsers.DynamicTableNameParser;
+import com.baomidou.mybatisplus.extension.parsers.ITableNameHandler;
 import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
@@ -19,6 +21,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author : Mr huangye
@@ -30,6 +34,7 @@ import java.util.ArrayList;
 public class MybatisPlusConf {
 
 
+    public static ThreadLocal<String> myTableName = new ThreadLocal<>();
     /**
      * 分页插件配置
      * @return
@@ -37,15 +42,36 @@ public class MybatisPlusConf {
     @Bean
     public PaginationInterceptor paginationInterceptor() {
         PaginationInterceptor interceptor = new PaginationInterceptor();
-        /*ArrayList<ISqlParser> iSqlParsers = new ArrayList<>();
+        ArrayList<ISqlParser> iSqlParsers = new ArrayList<>();
+        //动态表名实现:3.2.0版本有此类，3.1.0没有此类 3.1.2有此类
+        dynamicTableName(iSqlParsers);
         //多租户sql解析器
-        //表级别的 - 多租户sql过滤
-        TenantSqlParser tenantSqlParser = getTenantSqlParser();
-        interceptor.setSqlParserList(iSqlParsers);
-        iSqlParsers.add(tenantSqlParser);
+        // 表级别的 - 多租户sql过滤
+//        setSQLParser(interceptor, iSqlParsers);
         // 方法级别的 多租户sql过滤
-        setMethodParser(interceptor);*/
+        setMethodParser(interceptor);
+        interceptor.setSqlParserList(iSqlParsers);
         return interceptor;
+    }
+
+    private void dynamicTableName(ArrayList<ISqlParser> iSqlParsers) {
+        DynamicTableNameParser dynamicTableNameParser = new DynamicTableNameParser();
+        Map<String, ITableNameHandler> map = new HashMap<>();
+        map.put("users", new ITableNameHandler() {
+            //返回值为替换后的表名
+            @Override
+            public String dynamicTableName(MetaObject metaObject, String sql, String tableName) {
+                //如果此处获取到的值为null，则不替换，仍为原来内容
+                return myTableName.get();
+            }
+        });
+        dynamicTableNameParser.setTableNameHandlerMap(map);
+        iSqlParsers.add(dynamicTableNameParser);
+    }
+
+    private void setSQLParser(PaginationInterceptor interceptor, ArrayList<ISqlParser> iSqlParsers) {
+        TenantSqlParser tenantSqlParser = getTenantSqlParser();
+        iSqlParsers.add(tenantSqlParser);
     }
 
     private void setMethodParser(PaginationInterceptor interceptor) {
@@ -54,6 +80,7 @@ public class MybatisPlusConf {
             public boolean doFilter(MetaObject metaObject) {
                 MappedStatement ms = SqlParserHelper.getMappedStatement(metaObject);
                 //方法级别的过滤，此方法不加租户信息：查询作为条件，修改作为参数
+                //同时表名 也不会被替换，原来什么样之后什么样
                 if ("com.lf.mp.dao.UserMapper.selectById".equals(ms.getId())){
                     return true;
                 }
@@ -116,7 +143,7 @@ public class MybatisPlusConf {
     }
 
     /**
-     * 性能分析插件：生产环境不开启
+     * 性能分析插件：生产环境不开启  3.2.0版本没有此类
      * 会显示 sql的执行时间等信息
      * Time：66 ms - ID：com.lf.mp.dao.UsersMapper.selectList
      * Execute SQL：
