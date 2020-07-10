@@ -2,6 +2,8 @@ package com.lf.mp.conf;
 
 import com.baomidou.mybatisplus.core.injector.ISqlInjector;
 import com.baomidou.mybatisplus.core.parser.ISqlParser;
+import com.baomidou.mybatisplus.core.parser.ISqlParserFilter;
+import com.baomidou.mybatisplus.core.parser.SqlParserHelper;
 import com.baomidou.mybatisplus.extension.injector.LogicSqlInjector;
 import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
@@ -10,6 +12,8 @@ import com.baomidou.mybatisplus.extension.plugins.tenant.TenantHandler;
 import com.baomidou.mybatisplus.extension.plugins.tenant.TenantSqlParser;
 import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.expression.LongValue;
+import org.apache.ibatis.mapping.MappedStatement;
+import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -36,6 +40,9 @@ public class MybatisPlusConf {
         ArrayList<ISqlParser> iSqlParsers = new ArrayList<>();
         //多租户sql解析器
         TenantSqlParser tenantSqlParser = new TenantSqlParser();
+        /**
+         * 类级别的多租户使用
+         */
         tenantSqlParser.setTenantHandler(new TenantHandler() {
             @Override
             public Expression getTenantId() {
@@ -63,6 +70,21 @@ public class MybatisPlusConf {
         });
         iSqlParsers.add(tenantSqlParser);
         interceptor.setSqlParserList(iSqlParsers);
+
+        /**
+         * 方法级别的 多租户sql过滤
+         */
+        interceptor.setSqlParserFilter(new ISqlParserFilter() {
+            @Override
+            public boolean doFilter(MetaObject metaObject) {
+                MappedStatement ms = SqlParserHelper.getMappedStatement(metaObject);
+                //方法级别的过滤，此方法不加租户信息：查询作为条件，修改作为参数
+                if ("com.lf.mp.dao.UserMapper.selectById".equals(ms.getId())){
+                    return true;
+                }
+                return false;
+            }
+        });
         return interceptor;
     }
 
