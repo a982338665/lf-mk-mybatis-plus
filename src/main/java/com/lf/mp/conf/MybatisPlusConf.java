@@ -37,8 +37,32 @@ public class MybatisPlusConf {
     @Bean
     public PaginationInterceptor paginationInterceptor() {
         PaginationInterceptor interceptor = new PaginationInterceptor();
-        ArrayList<ISqlParser> iSqlParsers = new ArrayList<>();
+        /*ArrayList<ISqlParser> iSqlParsers = new ArrayList<>();
         //多租户sql解析器
+        //表级别的 - 多租户sql过滤
+        TenantSqlParser tenantSqlParser = getTenantSqlParser();
+        interceptor.setSqlParserList(iSqlParsers);
+        iSqlParsers.add(tenantSqlParser);
+        // 方法级别的 多租户sql过滤
+        setMethodParser(interceptor);*/
+        return interceptor;
+    }
+
+    private void setMethodParser(PaginationInterceptor interceptor) {
+        interceptor.setSqlParserFilter(new ISqlParserFilter() {
+            @Override
+            public boolean doFilter(MetaObject metaObject) {
+                MappedStatement ms = SqlParserHelper.getMappedStatement(metaObject);
+                //方法级别的过滤，此方法不加租户信息：查询作为条件，修改作为参数
+                if ("com.lf.mp.dao.UserMapper.selectById".equals(ms.getId())){
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
+
+    private TenantSqlParser getTenantSqlParser() {
         TenantSqlParser tenantSqlParser = new TenantSqlParser();
         /**
          * 类级别的多租户使用
@@ -68,24 +92,7 @@ public class MybatisPlusConf {
                 return false;
             }
         });
-        iSqlParsers.add(tenantSqlParser);
-        interceptor.setSqlParserList(iSqlParsers);
-
-        /**
-         * 方法级别的 多租户sql过滤
-         */
-        interceptor.setSqlParserFilter(new ISqlParserFilter() {
-            @Override
-            public boolean doFilter(MetaObject metaObject) {
-                MappedStatement ms = SqlParserHelper.getMappedStatement(metaObject);
-                //方法级别的过滤，此方法不加租户信息：查询作为条件，修改作为参数
-                if ("com.lf.mp.dao.UserMapper.selectById".equals(ms.getId())){
-                    return true;
-                }
-                return false;
-            }
-        });
-        return interceptor;
+        return tenantSqlParser;
     }
 
     /**
