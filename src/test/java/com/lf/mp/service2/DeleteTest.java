@@ -1,6 +1,8 @@
 package com.lf.mp.service2;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.lf.mp.dao.UsersMapper;
+import com.lf.mp.entity.User;
 import com.lf.mp.entity.Users;
 import lombok.extern.log4j.Log4j2;
 import org.junit.Test;
@@ -53,6 +55,20 @@ public class DeleteTest {
         users.setId(1087982257332887553L);
         users.setName("jjj");
         usersMapper.updateById(users);
+    }
+
+    /**
+     * 自定义查询：会查出所有的数据，包含delete == 1的数据
+     */
+    @Test
+    public void upselectCustom() {
+        LambdaQueryWrapper<User> lambda = new LambdaQueryWrapper<>();
+        lambda.like(User::getName, "雨")
+                .lt(User::getAge, "50");
+        //注解
+        List<Users> users = usersMapper.selectAll(lambda);
+        users.forEach(System.err::println);
+
     }
 
 

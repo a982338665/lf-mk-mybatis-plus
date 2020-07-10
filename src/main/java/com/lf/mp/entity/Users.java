@@ -1,5 +1,6 @@
 package com.lf.mp.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
 
@@ -54,6 +55,8 @@ public class Users implements Serializable {
 //            一般只设置全局即可
 //    @TableLogic(delval = "1",value = "0")
     @TableLogic
+    //表示查询时不显示
+    @TableField(select = false)
     private Integer deleted;
 
 }
