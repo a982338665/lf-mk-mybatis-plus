@@ -125,12 +125,13 @@ public class MybatisPlusConf {
     /**
      * 3.1.1 版本以前需要配置，之后的不需要配置
      * 逻辑删除配置
+     * bean of type 'com.baomidou.mybatisplus.core.injector.ISqlInjector' available: expected single matching bean but found 2: mySqlInjector,iSqlInjector
      * @return
      */
-    @Bean
-    public ISqlInjector iSqlInjector() {
-        return new LogicSqlInjector();
-    }
+//    @Bean
+//    public ISqlInjector iSqlInjector() {
+//        return new LogicSqlInjector();
+//    }
 
     /**
      * 配置乐观锁

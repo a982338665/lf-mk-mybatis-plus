@@ -97,7 +97,14 @@ Mybatis-Plus（MP）在 MyBatis 的基础上只做增强不做改变，简化开
         
     
 ## 8.sql注入器
-### 8.1 SQL注入器简介及自定义方法实现 
+###  8.1 SQL注入器简介及自定义方法实现 
+1.实现步骤： -- 等同于设计sql模板
+ * 创建定义方法的类 : com.lf.mp.method.DeleteAllMethod 
+ * 创建注入器： com.lf.mp.injector.MySqlInjector 
+ * 在Mapper中加入自定义方法 ：com.lf.mp.dao.UsersMapper
+ * 测试类 com.lf.mp.service2.InjectorTest 
+ * 使用sql注入器需要注释 bean -> ISqlInjector
+    bean of type 'com.baomidou.mybatisplus.core.injector.ISqlInjector' available: expected single matching bean but found 2: mySqlInjector,iSqlInjector
 ###  8.2 选装件InsertBatchSomeColumn 
 ###  8.3 选装件LogicDeleteByIdWithFill 
 ###  8.4 选装件alwaysUpdateSomeColumnById 

@@ -31,4 +31,10 @@ public interface UsersMapper extends BaseMapper<Users> {
 
     @Select("select * from users ${ew.customSqlSegment}")
     IPage<Users> selectUsersPages(Page<User> userPage, @Param(Constants.WRAPPER) Wrapper<User> wrapper);
+
+    /**
+     * 删除所有
+     * @return 返回影响行数
+     */
+    int deleteAll();
 }
