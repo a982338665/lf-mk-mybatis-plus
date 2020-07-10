@@ -23,4 +23,19 @@ public interface CommonMapper<T> extends BaseMapper<T> {
      * @return
      */
     int insertBatchSomeColumn(List<T> list);
+
+    /**
+     * 根据 id 逻辑删除数据,并带字段填充功能
+     * <p>注意入参是 entity !!! ,如果字段没有自动填充,就只是单纯的逻辑删除</p>
+     * <p>
+     * 自己的通用 mapper 如下使用:
+     * <pre>
+     * int deleteByIdWithFill(T entity);
+     * </pre>
+     * </p>
+     *
+     * @author miemie
+     * @since 2018-11-09
+     */
+    int deleteByIdWithFill(T entity);
 }

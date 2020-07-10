@@ -59,4 +59,16 @@ public class InjectorTest {
         }
         usersMapper.insertBatchSomeColumn(objects);
     }
+    /**
+     * 根据 id 逻辑删除数据,并带字段填充功能
+     */
+    @Test
+    public void deleteByIdWithFill() {
+        //逻辑删除时，同时修改其他字段
+        Users users = new Users();
+        //修改时自动填充
+        users.setName("hhhh");
+        users.setId(1281482044978774017L);
+        usersMapper.deleteByIdWithFill(users);
+    }
 }

@@ -25,6 +25,7 @@ public class Users implements Serializable {
     /**
      * 姓名
      */
+    @TableField(fill = FieldFill.UPDATE)
     private String name;
     /**
      * 年龄
