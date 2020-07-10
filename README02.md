@@ -50,8 +50,21 @@ Mybatis-Plus（MP）在 MyBatis 的基础上只做增强不做改变，简化开
     
     ·实现：
         1.添加插件配置（一般生产环境不开启）
-        
-    
+    ·执行sql分析打印：https://mybatis.plus/guide/p6spy.html
+        1.p6spy依赖，打印sql及执行时长， 3.1.0以上版本支持
+        2.引入依赖
+        3.yml添加配置：application-p6spy.yml
+            driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+            url: jdbc:p6spy:mysql://localhost:3306/mp?useSSL=false&serverTimezone=GMT%2B8&allowMultiQueries=true&autoReconnect=true&characterEncoding=utf-8
+        4.新增配置文件：spy.properties
+        5.注意！
+          driver-class-name 为 p6spy 提供的驱动类
+          url 前缀为 jdbc:p6spy 跟着冒号为对应数据库连接地址
+          打印出sql为null,在excludecategories增加commit
+          批量操作不打印sql,去除excludecategories中的batch
+          批量操作打印重复的问题请使用MybatisPlusLogFactory (3.2.1新增）
+          该插件有性能损耗，不建议生产环境使用。
+            
 ## 6.多租户
 ## 7.动态表
 ## 8.sql注入器
