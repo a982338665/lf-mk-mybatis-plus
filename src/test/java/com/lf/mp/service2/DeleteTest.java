@@ -8,6 +8,7 @@ import lombok.extern.log4j.Log4j2;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -27,6 +28,9 @@ public class DeleteTest {
     @Autowired
     UsersMapper usersMapper;
 
+    @Value("${spring.profiles.active}")
+    String env;
+
     /**
      * 逻辑删除：
      * UPDATE users SET deleted=1 WHERE id=? AND deleted=0
@@ -43,6 +47,7 @@ public class DeleteTest {
      */
     @Test
     public void selectList() {
+        System.err.println("当前环境："+ env);
         List<Users> list = usersMapper.selectList(null);
         list.forEach(System.err::println);
     }
