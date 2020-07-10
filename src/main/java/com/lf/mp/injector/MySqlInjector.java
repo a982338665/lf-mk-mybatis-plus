@@ -3,6 +3,7 @@ package com.lf.mp.injector;
 import com.baomidou.mybatisplus.core.injector.AbstractMethod;
 import com.baomidou.mybatisplus.core.injector.DefaultSqlInjector;
 import com.baomidou.mybatisplus.extension.injector.LogicSqlInjector;
+import com.baomidou.mybatisplus.extension.injector.methods.additional.InsertBatchSomeColumn;
 import com.lf.mp.method.DeleteAllMethod;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +25,14 @@ public class MySqlInjector extends LogicSqlInjector {
     @Override
     public List<AbstractMethod> getMethodList(Class<?> mapperClass) {
         List<AbstractMethod> methodList = super.getMethodList(mapperClass);
+        //全部删除装载
         methodList.add(new DeleteAllMethod());
+        //批量插入所有字段
+//        methodList.add(new InsertBatchSomeColumn());
+        //批量插入所有字段，排除逻辑删除字段不插入,
+//        methodList.add(new InsertBatchSomeColumn(t->!t.isLogicDelete()));
+        //排除逻辑删除字段  和 年龄字段不插入
+        methodList.add(new InsertBatchSomeColumn(t->!t.isLogicDelete()&&!t.getColumn().equals("age")));
         return methodList;
     }
 }

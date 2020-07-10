@@ -1,18 +1,15 @@
 package com.lf.mp.service2;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.lf.mp.dao.UsersMapper;
-import com.lf.mp.entity.User;
 import com.lf.mp.entity.Users;
 import lombok.extern.log4j.Log4j2;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * @author : Mr huangye
@@ -31,7 +28,7 @@ public class InjectorTest {
     /**
      * 逻辑删除：
      * Consume Time：42 ms 2020-07-10 14:18:43
-     *  Execute SQL：delete from users
+     * Execute SQL：delete from users
      * org.springframework.dao.DataIntegrityViolationException:
      * ### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException:
      * Cannot delete or update a parent row: a foreign key constraint fails (`mp`.`users`, CONSTRAINT `manager_fks` FOREIGN KEY (`manager_id`) REFERENCES `users` (`id`)
@@ -46,5 +43,20 @@ public class InjectorTest {
     public void deleteAll() {
         int i = usersMapper.deleteAll();
         System.err.println(i);
+    }
+
+    /**
+     * 批量插入
+     */
+    @Test
+    public void insertBatch() {
+        ArrayList<Users> objects = new ArrayList<>();
+        for (int i = 0; i < 2; i++) {
+            Users users = new Users();
+            users.setName("luofengddd"+i);
+            users.setEmail("ssss@qq.com."+i);
+            objects.add(users);
+        }
+        usersMapper.insertBatchSomeColumn(objects);
     }
 }
