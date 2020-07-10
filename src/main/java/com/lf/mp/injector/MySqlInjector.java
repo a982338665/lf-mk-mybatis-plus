@@ -13,6 +13,9 @@ import java.util.List;
  * @URL : CSDN 皇夜_
  * @createTime : 2020/7/10 14:06
  * @Description :
+ * 继承DefaultSqlInjector 和继承  LogicSqlInjector的区别：
+ * 第一个不包含 逻辑删除的配置
+ * 第二个 兼容逻辑删除的配置
  */
 @Component
 public class MySqlInjector extends LogicSqlInjector {
