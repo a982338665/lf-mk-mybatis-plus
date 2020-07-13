@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     /**
-     * 基本访问（单路径）
-     * @return
+     * 基本访问（单路径）测试类
+     * @return name
      */
     @RequestMapping(value = "/1",method = RequestMethod.GET)
-    public String say(){
+    public String say(String name ){
         System.out.print("hello");
         return "Hello world!";
     }

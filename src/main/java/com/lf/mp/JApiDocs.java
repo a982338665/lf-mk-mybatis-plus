@@ -13,9 +13,14 @@ public class JApiDocs {
 
     /**
      * 访问：http://localhost:8080/V1.0/index.html 获取接口文档
+     *
      * @param args
      */
     public static void main(String[] args) {
+        japi();
+    }
+
+    public static void japi() {
         DocsConfig config = new DocsConfig();
         config.setProjectPath("./"); // 项目根目录
 //        config.setProjectPath("D:/git-20200518/lf-mk-mybatisPlus"); // 项目根目录
@@ -25,6 +30,5 @@ public class JApiDocs {
 //        config.setDocsPath("D:\\git-20200518\\lf-mk-mybatisPlus\\src\\main\\resources\\docs"); // 生成API 文档所在目录
         config.setAutoGenerate(Boolean.TRUE);  // 配置自动生成
         Docs.buildHtmlDocs(config); // 执行生成文档
-
     }
 }
