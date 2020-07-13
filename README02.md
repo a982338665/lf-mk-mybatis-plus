@@ -116,4 +116,8 @@ Mybatis-Plus（MP）在 MyBatis 的基础上只做增强不做改变，简化开
     0.网址：https://japidocs.agilestudio.cn/#/zh-cn/?id=%e5%85%a5%e9%97%a8
     1.添加依赖
     2.执行main函数生成
+   
+## 10.集成mvc：
+    
+    1
 
