@@ -9,8 +9,8 @@ spring:
 #日志配置:trace,最低级别日志输出
 logging:
   level:
-    #    root: info
-    root: warn
+    root: info
+#    root: warn
     com.lf.mp.dao: trace
 #  pattern:
 #    console: '%p%m%n'
