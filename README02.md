@@ -122,7 +122,7 @@ Mybatis-Plus（MP）在 MyBatis 的基础上只做增强不做改变，简化开
     1.使用默认方式：查询[ResourceProperties]类下的CLASSPATH_RESOURCE_LOCATIONS变量，里面设置了默认的路径
         0.查找路径默认依次为：classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/
             即，当有重复命名的html，将会依次查询以上路径，取到则返回
-            例如：访问-http://localhost:8080/index.html  Hello /META-INF/resources/index
+            例如：访问-http://localhost:8080/index.html（index.html可不写）  Hello /META-INF/resources/index
         1.classpath:/META-INF/resources/：
             http://localhost:8080/index-info.html
             Hello META-INF/resources/*
@@ -137,4 +137,9 @@ Mybatis-Plus（MP）在 MyBatis 的基础上只做增强不做改变，简化开
             Hello /public/
         注意：使用默认方式templates：用于存放页面，一般是thyleleaf、FreeMaker、Velocity、JSP等 （注意，这个需要引入thymeleaf相关依赖），否则路径不生效
               springboot访问模板类静态资源：直接放在resources/templates目录下即可访问
-    5
+    5.使用模板引擎：以thymeleaf为例，集成后仍兼容 默认方式
+        1.添加依赖
+        2.准备资源文件 /templates/
+        3.写接口
+        4.测试：访问http://localhost:8080/test/test  响应：Hello /template/
+        
