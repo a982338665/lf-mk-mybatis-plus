@@ -137,9 +137,16 @@ Mybatis-Plus（MP）在 MyBatis 的基础上只做增强不做改变，简化开
             Hello /public/
         注意：使用默认方式templates：用于存放页面，一般是thyleleaf、FreeMaker、Velocity、JSP等 （注意，这个需要引入thymeleaf相关依赖），否则路径不生效
               springboot访问模板类静态资源：直接放在resources/templates目录下即可访问
-    5.使用模板引擎：以thymeleaf为例，集成后仍兼容 默认方式
+    2.使用模板引擎：以thymeleaf为例，集成后仍兼容 默认方式
         1.添加依赖
         2.准备资源文件 /templates/
         3.写接口
-        4.测试：访问http://localhost:8080/test/test  响应：Hello /template/
-        
+        4.测试：访问http://localhost:8080/test1/test1  响应：Hello /template/
+    3.使用spring.resources.static-locations自定义资源路径：-兼容默认目录
+        ·spring.resources.static-locations=classpath:/static,classpath:/public,classpath:/resources,classpath:/META-INF/resource
+        ·如果指定了拦截器，该属性有可能失效
+        ·需要在拦截器ResourceHandlerRegistry中通过addLocations()指定对应路径。
+        ·具体实现：
+            1.添加配置类：WebMvcConfig
+            2.准备资源文件： /test/index-test.html
+            3.测试：http://localhost:8080/test2/index-test.html   Hello /test/
