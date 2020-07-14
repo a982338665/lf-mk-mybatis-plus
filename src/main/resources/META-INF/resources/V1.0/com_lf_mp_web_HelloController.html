@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>create by lishengbo on 2017-12-18</title>
+    <title>测试分组
+当包含 description 的时候，取注解后面的内容，否则取整个文档注释的内容</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/google-code-prettify@1.0.5/bin/prettify.min.css">
@@ -41,10 +42,20 @@
         <div class="panel">
             <div id="heading0" data-parent="#accordion" class="catalog-title" data-toggle="collapse"
                  aria-expanded="true" data-target="#collapse0" aria-controls="collapse0">
-                <i class="glyphicon glyphicon-align-justify"></i> create by lishengbo on 2017-12-18
+                <i class="glyphicon glyphicon-align-justify"></i> 测试分组
+当包含 description 的时候，取注解后面的内容，否则取整个文档注释的内容
             </div>
             <div id="collapse0" class="collapse in " aria-labelledby="heading0">
                     <a class="catalog-item" href="com_lf_mp_web_HelloController.html#say">
+                        基本访问（单路径）测试类
+                    </a>
+                    <a class="catalog-item" href="com_lf_mp_web_HelloController.html#say2">
+                        基本访问（单路径）测试类
+                    </a>
+                    <a class="catalog-item" href="com_lf_mp_web_HelloController.html#say3">
+                        基本访问（单路径）测试类
+                    </a>
+                    <a class="catalog-item" href="com_lf_mp_web_HelloController.html#say4">
                         基本访问（单路径）测试类
                     </a>
             </div>
@@ -52,8 +63,7 @@
         <div class="panel">
             <div id="heading1" data-parent="#accordion" class="catalog-title" data-toggle="collapse"
                  aria-expanded="true" data-target="#collapse1" aria-controls="collapse1">
-                <i class="glyphicon glyphicon-align-justify"></i> create by lishengbo on 2017-12-18
-首页
+                <i class="glyphicon glyphicon-align-justify"></i> 首页
             </div>
             <div id="collapse1" class="collapse " aria-labelledby="heading1">
                     <a class="catalog-item" href="com_lf_mp_web_IndexController.html#say">
@@ -80,6 +90,143 @@
     <code>/test/1</code>
         <span class="label label-default">GET</span>
 </p>
+    <p><strong>请求参数</strong></p>
+        <table class="table table-bordered">
+            <tr>
+                <th>参数名</th>
+                <th>类型</th>
+                <th>必须</th>
+                <th>描述</th>
+            </tr>
+                <tr>
+                    <td>name</td>
+                    <td>string</td>
+                    <td>否</td>
+                    <td></td>
+                </tr>
+        </table>
+    <p><strong>返回结果</strong></p>
+    <pre class="prettyprint lang-json">string{}</pre>
+                        </div>
+                        <hr>
+                        <div class="action-item">
+<h2 id="say2"><a href="#">基本访问（单路径）测试类 </a></h2>
+<p><strong>请求URL</strong></p>
+<p>
+    <code>/test/2</code>
+        <span class="label label-default">GET</span>
+</p>
+    <p><strong>请求参数</strong></p>
+        <table class="table table-bordered">
+            <tr>
+                <th>参数名</th>
+                <th>类型</th>
+                <th>必须</th>
+                <th>描述</th>
+            </tr>
+                <tr>
+                    <td>id</td>
+                    <td>long</td>
+                    <td>否</td>
+                    <td>主键</td>
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td>string</td>
+                    <td>否</td>
+                    <td>姓名</td>
+                </tr>
+                <tr>
+                    <td>age</td>
+                    <td>int</td>
+                    <td>否</td>
+                    <td>年龄</td>
+                </tr>
+                <tr>
+                    <td>email</td>
+                    <td>string</td>
+                    <td>否</td>
+                    <td>邮箱</td>
+                </tr>
+                <tr>
+                    <td>managerId</td>
+                    <td>long</td>
+                    <td>否</td>
+                    <td>直属上级id</td>
+                </tr>
+                <tr>
+                    <td>createTime</td>
+                    <td>date</td>
+                    <td>否</td>
+                    <td>创建时间 - 新增时，自动填充</td>
+                </tr>
+                <tr>
+                    <td>updateTime</td>
+                    <td>date</td>
+                    <td>否</td>
+                    <td>修改时间 - 修改时自动填充</td>
+                </tr>
+                <tr>
+                    <td>version</td>
+                    <td>int</td>
+                    <td>否</td>
+                    <td>版本</td>
+                </tr>
+                <tr>
+                    <td>deleted</td>
+                    <td>int</td>
+                    <td>否</td>
+                    <td>@TableLogic(delval = "1",value = "0")</td>
+                </tr>
+        </table>
+    <p><strong>返回结果</strong></p>
+    <pre class="prettyprint lang-json">string{}</pre>
+                        </div>
+                        <hr>
+                        <div class="action-item">
+<h2 id="say3"><a href="#">基本访问（单路径）测试类 </a></h2>
+<p><strong>请求URL</strong></p>
+<p>
+    <code>/test/3</code>
+        <span class="label label-default">POST</span>
+</p>
+    <p><strong>请求参数</strong></p>
+            <pre class="prettyprint lang-json">{
+  "id": "long //主键",
+  "name": "string //姓名",
+  "age": "int //年龄",
+  "email": "string //邮箱",
+  "managerId": "long //直属上级id",
+  "createTime": "date //创建时间 - 新增时，自动填充",
+  "updateTime": "date //修改时间 - 修改时自动填充",
+  "version": "int //版本",
+  "deleted": "int //@TableLogic(delval \u003d \"1\",value \u003d \"0\")"
+}</pre>
+    <p><strong>返回结果</strong></p>
+    <pre class="prettyprint lang-json">string{}</pre>
+                        </div>
+                        <hr>
+                        <div class="action-item">
+<h2 id="say4"><a href="#">基本访问（单路径）测试类 </a></h2>
+<p><strong>请求URL</strong></p>
+<p>
+    <code>/test/4</code>
+        <span class="label label-default">POST</span>
+</p>
+    <p><strong>请求参数</strong></p>
+            <pre class="prettyprint lang-json">[
+  {
+    "id": "long //主键",
+    "name": "string //姓名",
+    "age": "int //年龄",
+    "email": "string //邮箱",
+    "managerId": "long //直属上级id",
+    "createTime": "date //创建时间 - 新增时，自动填充",
+    "updateTime": "date //修改时间 - 修改时自动填充",
+    "version": "int //版本",
+    "deleted": "int //@TableLogic(delval \u003d \"1\",value \u003d \"0\")"
+  }
+]</pre>
     <p><strong>返回结果</strong></p>
     <pre class="prettyprint lang-json">string{}</pre>
                         </div>
@@ -97,9 +244,15 @@
 <script>
 
     var search_source_data = [
-            {name: 'create by lishengbo on 2017-12-18.基本访问（单路径）测试类', url: 'com_lf_mp_web_HelloController.html#say'},
-            {name: 'create by lishengbo on 2017-12-18
-首页.基本访问（单路径）', url: 'com_lf_mp_web_IndexController.html#say'},
+            {name: '测试分组
+当包含 description 的时候，取注解后面的内容，否则取整个文档注释的内容.基本访问（单路径）测试类', url: 'com_lf_mp_web_HelloController.html#say'},
+            {name: '测试分组
+当包含 description 的时候，取注解后面的内容，否则取整个文档注释的内容.基本访问（单路径）测试类', url: 'com_lf_mp_web_HelloController.html#say2'},
+            {name: '测试分组
+当包含 description 的时候，取注解后面的内容，否则取整个文档注释的内容.基本访问（单路径）测试类', url: 'com_lf_mp_web_HelloController.html#say3'},
+            {name: '测试分组
+当包含 description 的时候，取注解后面的内容，否则取整个文档注释的内容.基本访问（单路径）测试类', url: 'com_lf_mp_web_HelloController.html#say4'},
+            {name: '首页.基本访问（单路径）', url: 'com_lf_mp_web_IndexController.html#say'},
     ];
 
 

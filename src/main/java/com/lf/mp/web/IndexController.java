@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * create by lishengbo on 2017-12-18
- * 首页
+ * @description 首页
  */
 @Controller
 @RequestMapping("/test1")

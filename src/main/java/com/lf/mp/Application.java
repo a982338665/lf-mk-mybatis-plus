@@ -11,7 +11,7 @@ public class Application {
 
 
     public static void main(String[] args) {
-        JApiDocs.japi();
+//        JApiDocs.japi();
         SpringApplication.run(Application.class, args);
     }
 
