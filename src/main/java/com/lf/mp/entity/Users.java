@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.Version;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -16,15 +18,18 @@ import java.util.Date;
  * @since 2020-07-10 08:49:02
  */
 @Data
+@ApiModel(value = "用户实体类")
 public class Users implements Serializable {
     private static final long serialVersionUID = 570410554725112284L;
     /**
      * 主键
      */
+    @ApiModelProperty(value = "主键ID", example = "1")
     private Long id;
     /**
      * 姓名
      */
+    @ApiModelProperty(value = "姓名", example = "张三")
     @TableField(fill = FieldFill.UPDATE)
     private String name;
     /**

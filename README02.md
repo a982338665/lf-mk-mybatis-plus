@@ -151,4 +151,19 @@ Mybatis-Plus（MP）在 MyBatis 的基础上只做增强不做改变，简化开
             2.准备资源文件： /test/index-test.html
             3.测试：http://localhost:8080/test2/index-test.html   Hello /test/
 
-## 11.
+## 11.mybatis-plus多表联查
+## 12.集成swagger2：
+    
+    0.访问地址：localhost:8080/swagger-ui.html
+    1.添加依赖
+    2.新增配置文件
+    3.接口添加注解：
+        ·类注解：@Api(value=”类的中文说明”, description=”类名称”),
+        ·方法注解：@ApiOperation(value=”方法名称说明”,tags=”方法描述”) 
+        ·方法注解：@ApiImplicitParams({
+              @ApiImplicitParam(paramType="path", name = "userUid", value = "某个商友信息的uid", required = true, dataType = "String")
+              }) 方法上需要传递很多参数，可以使用这个进行配置，name必须和方法上的参数保持一致，否则会出现两条
+        ·@ApiParam(value=”参数中文名称”，required=true)也可以用这个注解直接在参数的前面增加注解，但是个人更建议使用上一个注解
+         @ApiIgnore 某个参数需要忽略时，可以使用这个注解
+         @ApiModel 加在实体类上
+         @ApiModelProperty(value=”参数中文名称”，required=true)加在实体中的属性上，给属性一个中文描述，让对接人员看得懂；
