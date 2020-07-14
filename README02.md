@@ -150,3 +150,5 @@ Mybatis-Plus（MP）在 MyBatis 的基础上只做增强不做改变，简化开
             1.添加配置类：WebMvcConfig
             2.准备资源文件： /test/index-test.html
             3.测试：http://localhost:8080/test2/index-test.html   Hello /test/
+
+## 11.

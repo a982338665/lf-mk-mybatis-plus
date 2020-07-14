@@ -37,3 +37,14 @@ VALUES (1087982257332887553, '大boss', 40, 'boss@baomidou.com', NULL
        , '2019-01-14 09:15:15'),
        (1094592041087729666, '刘红雨', 32, 'lhm@baomidou.com', 1088248166370832385
        , '2019-01-14 09:48:16');
+
+# 用来测试代码生成器
+CREATE TABLE `t_s_user` (
+                            `id` int(11) NOT NULL AUTO_INCREMENT,
+                            `name` varchar(255) DEFAULT NULL,
+                            `birthday` date DEFAULT NULL,
+                            `age` int(11) DEFAULT NULL,
+                            `money` decimal(20,5) DEFAULT NULL,
+                            PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
