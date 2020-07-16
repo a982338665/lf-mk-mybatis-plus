@@ -1,5 +1,6 @@
 package com.lf.mp.conf;
 
+import com.lf.mp.util.TextUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -43,6 +44,7 @@ public class SpringInit implements ApplicationRunner {
             if (entity != null) {
                 result = EntityUtils.toString(entity);
                 log.info("结果：{}", result != null ? "success" : "fail!");
+                TextUtil.write("./swagger/file.json", result);
             }
         } catch (Exception e) {
             e.printStackTrace();
