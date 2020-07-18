@@ -19,6 +19,6 @@ public class TestVo {
     private Double money;
     private String[] array;
     private Users[] usersArray;
-    private TestVo testVo;
-    private List<TestVo> testVos;
+    private Users users;
+    private List<Users> usersList;
 }
