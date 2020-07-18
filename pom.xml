@@ -94,6 +94,11 @@
             <artifactId>httpcore</artifactId>
             <version>4.4.3</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.a982338665</groupId>
+            <artifactId>lf-open-java-swagger2word</artifactId>
+            <version>1.0.0-RELEASE</version>
+        </dependency>
         <!--        入门的版本-->
         <!--        <dependency>-->
         <!--            <groupId>com.baomidou</groupId>-->
