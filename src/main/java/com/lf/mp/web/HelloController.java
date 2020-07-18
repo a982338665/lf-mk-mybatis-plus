@@ -44,7 +44,7 @@ public class HelloController {
      * @param users
      */
     @RequestMapping(value = "/3",method = RequestMethod.POST)
-    public List<String> say3(@RequestBody Users users ){
+    public List<String> say3(@RequestBody TestVo users ){
         System.out.print("hello");
         return new ArrayList<>();
     }
