@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @description 首页
  */
 @Controller
-@RequestMapping("/test1")
+@RequestMapping("/test1666")
 public class IndexController {
 
     /**

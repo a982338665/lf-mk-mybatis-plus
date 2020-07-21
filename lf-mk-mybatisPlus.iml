@@ -105,6 +105,35 @@
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.11" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.3" level="project" />
     <orderEntry type="library" name="Maven: com.github.a982338665:lf-open-java-swagger2word:1.0.0-RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: com.aspose:aspose-words:jdk17:20.6" level="project" />
+    <orderEntry type="library" name="Maven: com.aspose:aspose-words:shaping-harfbuzz-plugin:20.6" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.jogl:jogl-all-main:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.jogl:jogl-all:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.jogl:jogl-all:natives-android-aarch64:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.jogl:jogl-all:natives-android-armv6:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.jogl:jogl-all:natives-linux-amd64:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.jogl:jogl-all:natives-linux-armv6:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.jogl:jogl-all:natives-linux-armv6hf:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.jogl:jogl-all:natives-linux-i586:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.jogl:jogl-all:natives-macosx-universal:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.jogl:jogl-all:natives-solaris-amd64:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.jogl:jogl-all:natives-solaris-i586:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.jogl:jogl-all:natives-windows-amd64:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.jogl:jogl-all:natives-windows-i586:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.gluegen:gluegen-rt-main:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.gluegen:gluegen-rt:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.gluegen:gluegen-rt:natives-android-aarch64:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.gluegen:gluegen-rt:natives-android-armv6:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.gluegen:gluegen-rt:natives-linux-amd64:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.gluegen:gluegen-rt:natives-linux-armv6:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.gluegen:gluegen-rt:natives-linux-armv6hf:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.gluegen:gluegen-rt:natives-linux-i586:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.gluegen:gluegen-rt:natives-macosx-universal:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.gluegen:gluegen-rt:natives-solaris-amd64:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.gluegen:gluegen-rt:natives-solaris-i586:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.gluegen:gluegen-rt:natives-windows-amd64:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.gluegen:gluegen-rt:natives-windows-i586:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: com.aspose:aspose-words:javadoc:20.6" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.8" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.8" level="project" />

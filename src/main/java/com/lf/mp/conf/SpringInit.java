@@ -1,7 +1,6 @@
 package com.lf.mp.conf;
 
 import com.github.lfopenjavaswagger2word.util.GenerateDocxUtils;
-import com.lf.mp.util.TextUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -46,7 +45,7 @@ public class SpringInit implements ApplicationRunner {
                 result = EntityUtils.toString(entity);
                 log.info("结果：{}", result != null ? "success" : "fail!");
 //                TextUtil.write("./swagger/file.json", result);
-                boolean b = GenerateDocxUtils.generateFileByJSON(result);
+                boolean b = GenerateDocxUtils.generateFileByJSON(result,null);
                 System.err.println(b);
             }
         } catch (Exception e) {
