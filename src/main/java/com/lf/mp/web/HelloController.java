@@ -6,6 +6,8 @@ import com.lf.mp.vo.TestVo;
 import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +22,9 @@ import java.util.List;
 @Api(tags = "Hello Controller测试")
 public class HelloController {
 
+
+    @Resource
+    HttpServletRequest httpServletRequest;
     /**
      * 基本访问（单路径）测试类1
      * @param name
@@ -28,8 +33,31 @@ public class HelloController {
     @ApiOperation(value = "测试1", notes = "根据ID获取用户信息详细描述")
     public String say(String name ){
         System.out.print("hello");
+        getRequestPrefix(httpServletRequest);
         return "Hello world!";
     }
+
+    /**
+     * 获取url请求前缀
+     * @explain http://localhost:8080/test
+     * @param request request对象
+     * @return
+     */
+    public static String getRequestPrefix (HttpServletRequest request) {
+        // 网络协议
+        String networkProtocol = request.getScheme();
+        // 网络ip
+        String ip = request.getServerName();
+        // 端口号
+        int port = request.getServerPort();
+        int port2 = request.getRemotePort();
+        // 项目发布名称
+        String webApp = request.getContextPath();
+        String urlPrefix = networkProtocol + "://" + ip + ":" + port + webApp+"|"+port2;
+        System.err.println(urlPrefix);
+        return urlPrefix;
+    }
+
     /**
      * 基本访问（单路径）测试类2
      * @param users
