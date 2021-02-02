@@ -1,3 +1,31 @@
+
+# 目录
+* [lf\-mk\-mybatisPlus](#lf-mk-mybatisplus)
+  * [1\.概述](#1概述)
+    * [1\.1 高级功能课程简介](#11-高级功能课程简介)
+    * [1\.2 基础数据表和基础项目介绍](#12-基础数据表和基础项目介绍)
+  * [2\.逻辑删除](#2逻辑删除)
+    * [2\.1 简介](#21-简介)
+    * [2\.2 实现](#22-实现)
+    * [2\.3 查询中排除删除标识字段及注意事项](#23-查询中排除删除标识字段及注意事项)
+  * [3\.自动填充](#3自动填充)
+    * [3\.1 简介](#31-简介)
+    * [3\.2 实现](#32-实现)
+    * [3\.3 优化](#33-优化)
+  * [4\.乐观锁](#4乐观锁)
+  * [5\.性能分析](#5性能分析)
+  * [6\.多租户](#6多租户)
+  * [7\.动态表](#7动态表)
+  * [8\.sql注入器](#8sql注入器)
+    * [8\.1 SQL注入器简介及自定义方法实现](#81-sql注入器简介及自定义方法实现)
+    * [8\.2 选装件InsertBatchSomeColumn](#82-选装件insertbatchsomecolumn)
+    * [8\.3 选装件LogicDeleteByIdWithFill](#83-选装件logicdeletebyidwithfill)
+    * [8\.4 选装件alwaysUpdateSomeColumnById](#84-选装件alwaysupdatesomecolumnbyid)
+  * [9\.集成japidocs：](#9集成japidocs)
+  * [10\.集成mvc：](#10集成mvc)
+  * [11\.mybatis\-plus多表联查](#11mybatis-plus多表联查)
+  * [12\.集成swagger2：](#12集成swagger2)
+
 # lf-mk-mybatisPlus
 Mybatis-Plus（MP）在 MyBatis 的基础上只做增强不做改变，简化开发、提高效率
 >课程地址：https://www.imooc.com/learn/1171
