@@ -3,6 +3,7 @@ Mybatis-Plus（MP）在 MyBatis 的基础上只做增强不做改变，简化开
 介绍MyBatis-Plus的高级功能，包括逻辑删除、自动填充、乐观锁、性能分析、多租户实现、动态表和SQL注入器等内容
 >课程地址：https://www.imooc.com/learn/1130
 >官方地址：mybatis.plus
+>swagger2，swagger3 ，knife4j集成
 
 # 目录
 * [lf\-mk\-mybatisPlus](#lf-mk-mybatisplus)
